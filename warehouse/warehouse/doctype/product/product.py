@@ -17,4 +17,9 @@ class Product(WebsiteGenerator):
 		if self.quantity and not self.standard_rate:
 			frappe.throw("Please Enter the Standard Rate Amount")
 
- 
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Simoh8/navari-test.git
+git push -u origin main
