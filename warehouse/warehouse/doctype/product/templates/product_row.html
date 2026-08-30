@@ -1,0 +1,28 @@
+<div class="product-list-item">
+	<a href="/{{ doc.route | e }}" class="product-list-link">
+		<h4>{{ (doc.product_name or doc.title or doc.name) | e }}</h4>
+	</a>
+
+	<div class="product-list-meta text-muted">
+		{% if doc.product_code %}
+			<span>Code: {{ doc.product_code | e }}</span>
+		{% endif %}
+		{% if doc.brand %}
+			<span>&middot; {{ doc.brand | e }}</span>
+		{% endif %}
+	</div>
+
+	{% if doc.standard_rate %}
+		<p class="product-list-price">
+			{{ frappe.utils.fmt_money(doc.standard_rate,) }}
+		</p>
+	{% endif %}
+
+	{% if doc.description %}
+		<p class="product-list-description">
+			{{ frappe.utils.strip_html(doc.description) | truncate(120) }}
+		</p>
+	{% endif %}
+</div>
+
+<!-- this is a sample default list template -->

@@ -1,0 +1,52 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<div class="product-page">
+	<h1>{{ title | e }}</h1>
+	<p class="text-muted">Product ID: {{ doc.name }}</p>
+
+	<h2>{{ doc.product_name }}</h2>
+
+	<table class="table table-bordered">
+		<tbody>
+			<tr>
+				<th>Product Code</th>
+				<td>{{ doc.product_code or "-" }}</td>
+			</tr>
+			<tr>
+				<th>Barcode</th>
+				<td>{{ doc.barcode or "-" }}</td>
+			</tr>
+			<tr>
+				<th>Standard Rate</th>
+				<td>
+					{% if doc.standard_rate %}
+						{{ frappe.utils.fmt_money(doc.standard_rate) }}
+					{% else %}
+						-
+					{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<th>Brand</th>
+				<td>{{ doc.brand or "-" }}</td>
+			</tr>
+			<tr>
+				<th>UOM</th>
+				<td>{{ doc.product_uom or "-" }}</td>
+			</tr>
+			<tr>
+				<th>Item Group</th>
+				<td>{{ doc.item_group or "-" }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	{% if doc.description %}
+	<h3>Description</h3>
+	<div class="product-description">
+		{{ doc.description }}
+	</div>
+	{% endif %}
+</div>
+{% endblock %}
