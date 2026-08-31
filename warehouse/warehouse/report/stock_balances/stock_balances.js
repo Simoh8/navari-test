@@ -5,7 +5,7 @@ frappe.query_reports["Stock Balances"] = {
 	filters: [
 		// {
 		// 	"fieldname": "my_filter",
-		// 	"label": __("My Filter"),
+		// 	"label": __("Filter"),
 		// 	"fieldtype": "Data",
 		// 	"reqd": 1,
 		// },

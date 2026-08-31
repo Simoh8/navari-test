@@ -39,11 +39,6 @@ def make_sl_entry(posting_date,
                 "voucher_no": voucher_no,
                 "submited":1,
                 "voucher_detail_no": voucher_detail_no
-               
-
-
-
-
             }
         )
         sle.insert(ignore_permissions=True)
