@@ -1,5 +1,5 @@
 # Copyright (c) 2026, simon muturi and contributors
-# For license information, please see license.txt
+# For license information, see license.txt
 
 import frappe
 from frappe import _
@@ -10,8 +10,9 @@ def execute(filters=None):
 
     columns = get_columns()
     data = get_data(filters)
+    chart = get_chart(filters)
 
-    return columns, data
+    return columns, data, None, chart
 
 
 def get_columns():
@@ -116,3 +117,64 @@ def get_data(filters):
         values,
         as_dict=True,
     )
+
+
+def get_chart(filters):
+    conditions = []
+    values = {}
+
+    if filters.get("from_date"):
+        conditions.append("posting_date >= %(from_date)s")
+        values["from_date"] = filters["from_date"]
+
+    if filters.get("to_date"):
+        conditions.append("posting_date <= %(to_date)s")
+        values["to_date"] = filters["to_date"]
+
+    if filters.get("item_code"):
+        conditions.append("item_code = %(item_code)s")
+        values["item_code"] = filters["item_code"]
+
+    if filters.get("warehouse"):
+        conditions.append("warehouse = %(warehouse)s")
+        values["warehouse"] = filters["warehouse"]
+
+    conditions.append("is_cancelled = 0")
+
+    where = " AND ".join(conditions)
+
+    data = frappe.db.sql(
+        f"""
+        SELECT
+            posting_date,
+            SUM(actual_qty) AS qty
+        FROM `tabStock Ledger Entry`
+        WHERE {where}
+        GROUP BY posting_date
+        ORDER BY posting_date
+        """,
+        values,
+        as_dict=True,
+    )
+
+    return {
+        "data": {
+            "labels": [row.posting_date for row in data],
+            "datasets": [
+                {
+                    "name": _("Stock Movement"),
+                    "values": [row.qty for row in data],
+                }
+            ],
+        },
+        "type": "line",
+        "colors": ["#2490EF"],
+        "axisOptions": {
+            "xAxisMode": "tick",
+            "xIsSeries": True,
+        },
+        "lineOptions": {
+            "regionFill": True,
+            "hideDots": False,
+        },
+    }
