@@ -1,64 +1,45 @@
-# Copyright (c) 2026, simon muturi and contributors
-# For license information, please see license.txt
-
-# import frappe
-from frappe import _
+import frappe
+from warehouse.utils.utils import get_stock_ledger
 
 
-def execute(filters: dict | None = None):
-	"""Return columns and data for the report.
-
-	This is the main entry point for the report. It accepts the filters as a
-	dictionary and should return columns and data. It is called by the framework
-	every time the report is refreshed or a filter is updated.
-	"""
-	columns = get_columns()
-	data = get_data()
-
-	return columns, data
-
-def execute_snapshot_report(filters: dict | None = None):
-	"""Return columns and data for the report.
-
-	This is the main entry point for snapshot report. When 'Synced
-	Report' is enabled in report, framework will call this method
-	every time the report is refreshed or a filter is updated. It
-	accepts the same filters as normal execute. But a utility method -
-	get_latest_sync, is also imported.
-
-	"""
-	from frappe.database.duckdb.database import get_latest_sync
-
-	columns = get_columns()
-	data = get_data()
-
-	return columns, data
-
-def get_columns() -> list[dict]:
-	"""Return columns for the report.
-
-	One field definition per column, just like a DocType field definition.
-	"""
-	return [
-		{
-			"label": _("Column 1"),
-			"fieldname": "column_1",
-			"fieldtype": "Data",
-		},
-		{
-			"label": _("Column 2"),
-			"fieldname": "column_2",
-			"fieldtype": "Int",
-		},
-	]
+def execute(filters=None):
+    filters = filters or {}
+    columns = get_columns()
+    data = get_data(filters)
+    return columns, data
 
 
-def get_data() -> list[list]:
-	"""Return data for the report.
+def get_columns():
+    return [
+        {"label": "Posting Date/Time", "fieldname": "posting_datetime", "fieldtype": "Datetime", "width": 160},
+        {"label": "Item Code", "fieldname": "item_code", "fieldtype": "Link", "options": "Item", "width": 120},
+        {"label": "Warehouse", "fieldname": "warehouse", "fieldtype": "Link", "options": "Warehouse", "width": 140},
+        {"label": "Voucher Type", "fieldname": "voucher_type", "fieldtype": "Data", "width": 110},
+        {"label": "Voucher No", "fieldname": "voucher_no", "fieldtype": "Dynamic Link", "options": "voucher_type", "width": 140},
+        {"label": "Actual Qty", "fieldname": "actual_qty", "fieldtype": "Float", "width": 100},
+        {"label": "Balance Qty", "fieldname": "qty_after_transaction", "fieldtype": "Float", "width": 100},
+        {"label": "Valuation Rate", "fieldname": "valuation_rate", "fieldtype": "Currency", "width": 120},
+        {"label": "Stock Value", "fieldname": "stock_value", "fieldtype": "Currency", "width": 120},
+    ]
 
-	The report data is a list of rows, with each row being a list of cell values.
-	"""
-	return [
-		["Row 1", 1],
-		["Row 2", 2],
-	]
+
+def get_data(filters):
+    item_code = filters.get("item_code")
+    warehouse = filters.get("warehouse")
+
+    rows = get_stock_ledger(item_code, warehouse, filters.get("to_date"))
+
+    # Voucher metadata joined in Python (kept out of the CTE for readability)
+    for row in rows:
+        sle = frappe.db.get_value(
+            "Stock Ledger Entry", row.name,
+            ["voucher_type", "voucher_no"], as_dict=True
+        )
+        row.update(sle)
+        row["item_code"] = item_code
+        row["warehouse"] = warehouse
+
+    if filters.get("from_date"):
+        rows = [r for r in rows if str(r.posting_datetime) >= str(filters["from_date"])]
+
+    return rows

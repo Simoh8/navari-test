@@ -10,6 +10,7 @@
   "stock_entry_type",
   "posting_date",
   "posting_time",
+  "is_cancelled",
   "column_break_iznk",
   "target_warehouse",
   "source_warehouse",
@@ -85,13 +86,20 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_cancelled",
+   "fieldtype": "Check",
+   "label": "Is Cancelled ?",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-08-30 23:51:31.862079",
+ "modified": "2026-08-31 00:30:30.923263",
  "modified_by": "Administrator",
  "module": "Warehouse",
  "name": "Stock Entry",

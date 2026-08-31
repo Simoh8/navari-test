@@ -17,7 +17,7 @@ class Warehouse(NestedSet):
 
 
 
-	def get_descendant_warehouses(warehouse):
+def get_descendant_warehouses(warehouse):
 		"""Used by Stock Balance report for tree consolidation.
 		Returns all leaf + group descendants (inclusive) using lft/rgt."""
 		lft, rgt = frappe.db.get_value("Warehouse", warehouse, ["lft", "rgt"])

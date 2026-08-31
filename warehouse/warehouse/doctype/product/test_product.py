@@ -1,7 +1,7 @@
 # Copyright (c) 2026, simon muturi and Contributors
 # See license.txt
 
-# import frappe
+import frappe
 from frappe.tests import IntegrationTestCase
 
 
@@ -19,4 +19,22 @@ class IntegrationTestProduct(IntegrationTestCase):
 	Use this class for testing interactions between multiple components.
 	"""
 
-	pass
+	def test_item_route(self):
+
+		document=frappe.get_doc({
+			"doctype":"Product",
+			"product_name":"Product Test",
+			"product_uom": "UOM",
+			"is_published":1
+
+
+		})
+		document.insert()
+		self.assertEqual(
+			document.route,"products/product-test"
+			
+		)
+
+
+
+		

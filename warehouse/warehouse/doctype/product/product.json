@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_bulk_edit": 1,
+ "allow_guest_to_view": 1,
  "allow_import": 1,
  "allow_rename": 1,
  "autoname": "PW-.####-.YY",
@@ -94,8 +95,7 @@
   {
    "fieldname": "route",
    "fieldtype": "Data",
-   "label": "Route",
-   "read_only": 1
+   "label": "Route"
   },
   {
    "default": "0",
@@ -129,9 +129,8 @@
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
- "is_submittable": 1,
  "links": [],
- "modified": "2026-08-31 00:06:29.092183",
+ "modified": "2026-08-31 12:54:24.338046",
  "modified_by": "Administrator",
  "module": "Warehouse",
  "name": "Product",
@@ -151,7 +150,6 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
  "route": "products",
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
@@ -159,6 +157,5 @@
  "sort_order": "DESC",
  "states": [],
  "title_field": "product_name",
- "track_changes": 1,
- "track_seen": 1
+ "track_changes": 1
 }

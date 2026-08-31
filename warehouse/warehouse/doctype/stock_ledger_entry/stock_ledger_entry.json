@@ -8,14 +8,18 @@
  "field_order": [
   "posting_date",
   "posting_time",
-  "posting_date_and_time",
+  "posting_datetime",
   "item_code",
+  "voucher_type",
+  "voucher_no",
   "column_break_gwpc",
   "warehouse",
   "actual_qty",
   "incoming_rate",
-  "is_cancelled_",
-  "amended_from"
+  "is_cancelled",
+  "is_adjustment_entry",
+  "amended_from",
+  "voucher_detail_no"
  ],
  "fields": [
   {
@@ -27,11 +31,6 @@
    "fieldname": "posting_time",
    "fieldtype": "Time",
    "label": "Posting Time"
-  },
-  {
-   "fieldname": "posting_date_and_time",
-   "fieldtype": "Datetime",
-   "label": "Posting Date and Time"
   },
   {
    "fieldname": "item_code",
@@ -60,12 +59,6 @@
    "label": "Incoming Rate"
   },
   {
-   "default": "0",
-   "fieldname": "is_cancelled_",
-   "fieldtype": "Check",
-   "label": "Is Cancelled ?"
-  },
-  {
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
@@ -74,6 +67,42 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "voucher_type",
+   "fieldtype": "Link",
+   "label": "Voucher Type",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "voucher_no",
+   "fieldtype": "Dynamic Link",
+   "label": "Voucher No",
+   "options": "voucher_type"
+  },
+  {
+   "fieldname": "voucher_detail_no",
+   "fieldtype": "Data",
+   "label": "Voucher Detail No"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_adjustment_entry",
+   "fieldtype": "Check",
+   "label": "Is Adjustment Entry ?",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_cancelled",
+   "fieldtype": "Check",
+   "label": "Is Cancelled ?",
+   "read_only": 1
+  },
+  {
+   "fieldname": "posting_datetime",
+   "fieldtype": "Datetime",
+   "label": "Posting Date and Time"
   }
  ],
  "grid_page_length": 50,
@@ -81,7 +110,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-08-30 23:59:52.034201",
+ "modified": "2026-08-31 01:48:03.263781",
  "modified_by": "Administrator",
  "module": "Warehouse",
  "name": "Stock Ledger Entry",
