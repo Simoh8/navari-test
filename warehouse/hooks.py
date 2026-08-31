@@ -24,6 +24,11 @@ app_license = "mit"
 # Includes in <head>
 # ------------------
 
+fixtures=["Stock UOM"]
+
+
+
+
 # include js, css files in header of desk.html
 # app_include_css = "/assets/warehouse/css/warehouse.css"
 # app_include_js = "/assets/warehouse/js/warehouse.js"

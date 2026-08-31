@@ -5,9 +5,5 @@
 from frappe.model.document import Document
 
 
-class StockEntryDetail(Document):
-
-
-	def validate(self):
-		self.amount= self.quantity*self.basic_rate
-		
+class StockUOM(Document):
+	pass

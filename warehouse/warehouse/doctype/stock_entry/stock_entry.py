@@ -15,8 +15,9 @@ class StockEntry(Document):
 
 
     def validate(self):
+        # super().validate()
+
         self.get_stock_entry_items()
-        pass
 
 
     def on_submit(self):
@@ -24,7 +25,7 @@ class StockEntry(Document):
             if self.stock_entry_type=="Material Receipt":
                 make_sl_entry(
                     self.posting_date,
-                    row.item_code, 
+                    # row.item_code, 
                     self.posting_time,
                     item_code= row.item_code,
                     warehouse=row.target_warehouse,
@@ -37,6 +38,32 @@ class StockEntry(Document):
 
 
                 )
+            elif self.stock_entry_type =="Material Issue":
+                make_sl_entry(
+                    self.posting_date,
+                    self.posting_time,
+                    item_code=row.item_code,
+                    warehouse=row.target_warehouse,
+                    actual_qty=row.quantity,
+                    incoming_rate=row.basic_rate,
+                    voucher_type="Stock Entry",
+                    voucher_no=self.name,
+                    voucher_detail_no=row.name
+                    )
+            else:
+                make_sl_entry(
+                    self.posting_date,
+                    self.posting_time,
+                    item_code=row.item_code,
+                    warehouse=row.target_warehouse,
+                    actual_qty=row.quantity,
+                    incoming_rate=row.basic_rate,
+                    voucher_type="Stock Entry",
+                    voucher_no=self.name,
+                    voucher_detail_no=row.name
+
+                )
+    
     
 
 
@@ -47,7 +74,9 @@ class StockEntry(Document):
 
 
     def get_stock_entry_items(self):
-        print(type(self.product_details))
+        for row in self.product_details:
+            pass
+
 
     def on_cancel(self):
         self.is_cancelled=1

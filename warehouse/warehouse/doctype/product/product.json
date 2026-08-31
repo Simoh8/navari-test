@@ -44,9 +44,10 @@
   },
   {
    "fieldname": "product_uom",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Product UOM",
+   "options": "Stock UOM",
    "reqd": 1
   },
   {
@@ -130,7 +131,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2026-08-31 12:54:24.338046",
+ "modified": "2026-08-31 16:12:54.267904",
  "modified_by": "Administrator",
  "module": "Warehouse",
  "name": "Product",

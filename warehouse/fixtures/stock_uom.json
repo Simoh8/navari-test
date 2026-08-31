@@ -1,0 +1,83 @@
+[
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock UOM",
+  "modified": "2026-08-31 16:12:06.108852",
+  "name": "Litre",
+  "uom_code": "Ltr",
+  "uom_name": "Litre"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock UOM",
+  "modified": "2026-08-31 16:12:06.130293",
+  "name": "Piece",
+  "uom_code": "Pcs",
+  "uom_name": "Piece"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock UOM",
+  "modified": "2026-08-31 16:12:06.116838",
+  "name": "Meter",
+  "uom_code": "Mtr",
+  "uom_name": "Meter"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock UOM",
+  "modified": "2026-08-31 16:11:50.729474",
+  "name": "Box",
+  "uom_code": "Box",
+  "uom_name": "Box"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock UOM",
+  "modified": "2026-08-31 16:12:06.095527",
+  "name": "Dozen",
+  "uom_code": "Dzn",
+  "uom_name": "Dozen"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock UOM",
+  "modified": "2026-08-31 16:12:06.102661",
+  "name": "Gram",
+  "uom_code": "Gm",
+  "uom_name": "Gram"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock UOM",
+  "modified": "2026-08-31 16:12:06.135941",
+  "name": "Ton",
+  "uom_code": "Ton",
+  "uom_name": "Ton"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock UOM",
+  "modified": "2026-08-31 16:12:06.124470",
+  "name": "Pack",
+  "uom_code": "Pack",
+  "uom_name": "Pack"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock UOM",
+  "modified": "2026-08-31 16:12:06.141831",
+  "name": "Unit",
+  "uom_code": "Unit",
+  "uom_name": "Unit"
+ }
+]
