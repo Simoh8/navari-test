@@ -27,7 +27,6 @@ class Product(WebsiteGenerator):
 
 
 
-
 def change_submit_state(self):
     self.is_submitted=1 
 

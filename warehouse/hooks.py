@@ -24,7 +24,7 @@ app_license = "mit"
 # Includes in <head>
 # ------------------
 
-fixtures=["Stock UOM"]
+fixtures=["Stock UOM","Item Group"]
 
 
 

@@ -1,0 +1,110 @@
+[
+ {
+  "description": "All Item Groups",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Item Group",
+  "is_group": 1,
+  "item_group_name": "All Item Groups",
+  "modified": "2026-09-02 14:33:44.876163",
+  "name": "All Item Groups",
+  "old_parent": "",
+  "parent_item_group": null
+ },
+ {
+  "description": "Components",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Item Group",
+  "is_group": 1,
+  "item_group_name": "Components",
+  "modified": "2026-09-02 14:34:06.581157",
+  "name": "Components",
+  "old_parent": "All Item Groups",
+  "parent_item_group": "All Item Groups"
+ },
+ {
+  "description": "Resistors",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Item Group",
+  "is_group": 0,
+  "item_group_name": "Resistors",
+  "modified": "2026-09-02 14:34:20.940722",
+  "name": "Resistors",
+  "old_parent": "Components",
+  "parent_item_group": "Components"
+ },
+ {
+  "description": "Capacitors",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Item Group",
+  "is_group": 0,
+  "item_group_name": "Capacitors",
+  "modified": "2026-09-02 14:34:37.616314",
+  "name": "Capacitors",
+  "old_parent": "Components",
+  "parent_item_group": "Components"
+ },
+ {
+  "description": "Semiconductors",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Item Group",
+  "is_group": 0,
+  "item_group_name": "Semiconductors",
+  "modified": "2026-09-02 14:34:52.125115",
+  "name": "Semiconductors",
+  "old_parent": "Components",
+  "parent_item_group": "Components"
+ },
+ {
+  "description": "Finished Goods",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Item Group",
+  "is_group": 1,
+  "item_group_name": "Finished Goods",
+  "modified": "2026-09-02 14:35:15.477491",
+  "name": "Finished Goods",
+  "old_parent": "All Item Groups",
+  "parent_item_group": "All Item Groups"
+ },
+ {
+  "description": "Consumer Electronics",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Item Group",
+  "is_group": 0,
+  "item_group_name": "Consumer Electronics",
+  "modified": "2026-09-02 14:35:38.255591",
+  "name": "Consumer Electronics",
+  "old_parent": "Finished Goods",
+  "parent_item_group": "Finished Goods"
+ },
+ {
+  "description": "Industrial Electronics",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Item Group",
+  "is_group": 0,
+  "item_group_name": "Industrial Electronics",
+  "modified": "2026-09-02 14:36:06.693503",
+  "name": "Industrial Electronics",
+  "old_parent": "Finished Goods",
+  "parent_item_group": "Finished Goods"
+ },
+ {
+  "description": "Packaging Materials",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Item Group",
+  "is_group": 1,
+  "item_group_name": "Packaging Materials",
+  "modified": "2026-09-02 14:36:36.674342",
+  "name": "Packaging Materials",
+  "old_parent": "All Item Groups",
+  "parent_item_group": "All Item Groups"
+ }
+]
