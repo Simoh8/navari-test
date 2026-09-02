@@ -19,4 +19,4 @@ class IntegrationTestStockLedgerEntry(IntegrationTestCase):
 	Use this class for testing interactions between multiple components.
 	"""
 
-	pass
+	
