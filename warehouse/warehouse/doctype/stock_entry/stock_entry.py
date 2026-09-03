@@ -50,6 +50,7 @@ class StockEntry(Document):
                     voucher_no=self.name,
                     voucher_detail_no=row.name
                     )
+                
             else:
                 make_sl_entry(
                     self.posting_date,

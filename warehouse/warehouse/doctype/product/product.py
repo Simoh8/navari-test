@@ -4,7 +4,10 @@
 import frappe
 from frappe.utils import nowdate, nowtime
 from frappe.website.website_generator import WebsiteGenerator
-from warehouse.warehouse.doctype.stock_ledger_entry.stock_ledger_entry import make_sl_entry
+
+from warehouse.warehouse.doctype.stock_ledger_entry.stock_ledger_entry import (
+    make_sl_entry,
+)
 
 
 class Product(WebsiteGenerator):
@@ -12,38 +15,31 @@ class Product(WebsiteGenerator):
     def validate(self):
         super().validate()
         self.check_for_quantity_and_rate()
-        make_stock_ledger_entry(self)
-        
-        change_submit_state(self)
-        
 
-
+    def after_insert(self):
+        frappe.enqueue(
+            "warehouse.warehouse.doctype.product.product.make_stock_ledger_entry",
+            product_name=self.name,
+            enqueue_after_commit=True,
+            queue="short",
+        )
 
     def check_for_quantity_and_rate(self):
         if self.quantity and not self.standard_rate:
             frappe.throw("Please Enter the Standard Rate Amount")
 
-    pass
+def make_stock_ledger_entry(product_name):
+    product = frappe.get_doc("Product", product_name)
+    print("the product is ", product)
 
-
-
-def change_submit_state(self):
-    self.is_submitted=1 
-
-def make_stock_ledger_entry(self):
-    if self.is_submitted :
-        return
-    elif self.quantity ==0:
-        return
-    else:
-        make_sl_entry(
-            posting_date=nowdate(),
-            posting_time=nowtime(),
-            item_code=self.product_code,
-            warehouse=self.warehouse,
-            actual_qty=self.quantity,
-            incoming_rate=self.standard_rate,
-            voucher_type="Product",
-            voucher_no=None,
-            voucher_detail_no=None
-        )
+    make_sl_entry(
+        posting_date=nowdate(),
+        posting_time=nowtime(),
+        warehouse=product.warehouse,
+        actual_qty=product.quantity,
+        incoming_rate=product.standard_rate,
+        item_code=product.name,
+        voucher_type="Product",
+        voucher_no=product.name,
+        voucher_detail_no=product.name,
+    )

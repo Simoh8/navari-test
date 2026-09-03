@@ -16,7 +16,9 @@ class StockLedgerEntry(Document):
 
 def make_sl_entry(posting_date,
                   posting_time,
-                  item_code, warehouse,
+                  item_code,
+                 warehouse,
+                 
                   voucher_type,
                   voucher_no,
                   actual_qty,

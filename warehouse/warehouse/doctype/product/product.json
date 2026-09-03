@@ -10,7 +10,7 @@
  "engine": "InnoDB",
  "field_order": [
   "product_name",
-  "product_code",
+  "item_code",
   "product_uom",
   "is_enabled_",
   "is_stock_item",
@@ -37,11 +37,6 @@
   {
    "fieldname": "column_break_keek",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "product_code",
-   "fieldtype": "Data",
-   "label": "Product Code"
   },
   {
    "fieldname": "product_uom",
@@ -134,6 +129,11 @@
    "fieldtype": "Check",
    "label": "Is Submitted",
    "read_only": 1
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Data",
+   "label": "Item Code"
   }
  ],
  "grid_page_length": 50,
@@ -141,7 +141,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2026-09-02 14:37:35.061157",
+ "modified": "2026-09-02 16:17:18.247558",
  "modified_by": "Administrator",
  "module": "Warehouse",
  "name": "Product",
