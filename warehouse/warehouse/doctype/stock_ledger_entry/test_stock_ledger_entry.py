@@ -1,7 +1,7 @@
 # Copyright (c) 2026, simon muturi and Contributors
 # See license.txt
 
-# import frappe
+import frappe
 from frappe.tests import IntegrationTestCase
 
 
@@ -18,5 +18,15 @@ class IntegrationTestStockLedgerEntry(IntegrationTestCase):
 	Integration tests for StockLedgerEntry.
 	Use this class for testing interactions between multiple components.
 	"""
+
+
+	def test_stock_amount(self):
+		entry= frappe.get_doc({
+			"doctype":"Stock Ledger Entry"
+		})
+		entry.insert()
+		self.assertEqual(
+			
+		)
 
 	

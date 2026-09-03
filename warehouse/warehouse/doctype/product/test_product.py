@@ -12,29 +12,40 @@ EXTRA_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
 IGNORE_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
 
 
-
 class IntegrationTestProduct(IntegrationTestCase):
-	"""
-	Integration tests for Product.
-	Use this class for testing interactions between multiple components.
-	"""
+    """
+    Integration tests for Product.
+    Use this class for testing interactions between multiple components.
+    """
 
-	def test_item_route(self):
+    def test_item_route(self):
 
-		document=frappe.get_doc({
-			"doctype":"Product",
-			"product_name":"Product Test",
-			"product_uom": "UOM",
-			"is_published":1
-
-
-		})
-		document.insert()
-		self.assertEqual(
-			document.route,"products/product-test"
-			
-		)
+        document = frappe.get_doc({
+            "doctype": "Product",
+            "product_name": "Product Test",
+            "product_uom": "UOM",
+            "is_published": 1
 
 
+        })
+        document.insert()
+        self.assertEqual(
+            document.route, "products/product-test"
 
-		
+        )
+
+    def test_product_amount_and_rate(self):
+        document = frappe.get_doc({
+            "doctype": "Product",
+            "product_name": "test_128665",
+            "item_code": "GEWRNFERFMER",
+            "product_uom": "Box",
+            "warehouse":"Showroom Store 1"
+
+        })
+
+        document.insert()
+        self.assertEqual(
+            document.product_uom, "Box"
+
+        )
